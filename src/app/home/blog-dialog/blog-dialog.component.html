@@ -1,0 +1,58 @@
+<mat-dialog-content class="mat-typography">
+  <div style="display: flex; justify-content: space-between; " >
+    <div style=" display: flex; align-items: center; ">
+      <h3 style="margin: 0; margin-left: 30px; font-weight: bold;" >
+
+        {{isUpdate ? "Yazıyı güncelle..." : title}}
+
+      </h3>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+
+  <div *ngIf="!isUpdate">
+    <div class="container">
+      <div class="row" style="margin-bottom: 10px;">
+          <div class="col-md-6">
+            <img class="w-100" src="assets/image{{imageUrl}}.jpg" alt="">
+          </div>
+          <div class="col-md-6" style="margin-top: 15px;">
+            <p>{{body}}</p>
+          </div>
+      </div>
+      <mat-divider></mat-divider>
+      <h4 style=" font-weight: bold;">Yorumlar</h4>
+      <div class="row" *ngFor="let comment  of commentData" style="margin-top: 10px; padding: 20px; background-color: lightgray;">
+        <div class="col-md-2">
+          <img   style="border-radius: 50%;" src="assets/profile/profile{{comment.userId}}.jpg" alt="">
+        </div>
+        <div class="col-md-10">
+          <h3 style=" font-weight: bold;">
+            {{comment.name}}
+          </h3>
+          <p>
+            {{comment.body}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isUpdate">
+    <form class="example-form" [formGroup]="form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Başlık</mat-label>
+        <input matInput formControlName="title">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>İçerik</mat-label>
+        <textarea matInput  formControlName="body" cols="40" rows="10"></textarea>
+      </mat-form-field>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Kapat</button>
+   <button mat-button [disabled]="!form.valid" color="primary" (click)="onSubmit()" *ngIf="isUpdate">Güncelle</button>
+</mat-dialog-actions>

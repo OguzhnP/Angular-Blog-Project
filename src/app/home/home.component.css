@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.mdc-card__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 52px;
+  padding: 8px;
+  justify-content: space-between;
+}
+.mat-mdc-card-header {
+  display: flex;
+  padding: 16px 16px 0;
+  justify-content: center;
+}
